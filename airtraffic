@@ -1,0 +1,24 @@
+# تعريف دالة الترتيب باستخدام Insertion Sort
+def insertion_sort(flights, key):
+    for i in range(1, len(flights)):
+        temp = flights[i]
+        j = i - 1
+        while j >= 0 and flights[j][key] > temp[key]:
+            flights[j + 1] = flights[j]
+            j -= 1
+        flights[j + 1] = temp
+
+# بيانات الرحلات (كل رحلة تحتوي على ID, وقت, ارتفاع, سرعة)
+flights = [
+    {"Flight ID": "A320", "Time": "12:30", "Altitude": 35000, "Speed": 500},
+    {"Flight ID": "B737", "Time": "10:15", "Altitude": 33000, "Speed": 450},
+    {"Flight ID": "C919", "Time": "14:45", "Altitude": 36000, "Speed": 520},
+    {"Flight ID": "D787", "Time": "11:00", "Altitude": 34000, "Speed": 480},
+]
+
+# ترتيب الرحلات حسب الوقت
+insertion_sort(flights, key="Time")
+
+# طباعة البيانات بعد الترتيب
+for flight in flights:
+    print(flight)
